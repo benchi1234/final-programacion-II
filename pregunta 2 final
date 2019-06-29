@@ -1,0 +1,71 @@
+#include <iostream>
+#include "console.h"
+#include <string>
+#include <map.h>
+#include <math.h>
+#define PI 3.1416
+using namespace std;
+
+class Punto{
+    public:
+    Punto(double a, double b){
+       x = a;
+       y = b;
+    }
+        int cuadrante(){
+            int aux = 0;
+            if(x > 0 && y < 0){
+                 aux = 4;
+            }
+            if(x > 0 && y > 0){
+                 aux = 1;
+            }
+            if(x < 0 && y > 0){
+                 aux = 2;
+            }
+            if(x < 0 && y < 0){
+                 aux = 3;
+            }
+            return aux;
+        }
+        double getX(){
+            return x;
+        }
+        double getY(){
+            return y;
+        }
+        double tita(){
+            double  m = 0;
+            double  angulo = 0;
+            m = y/x;
+            angulo = atan(m)*180/PI;
+            return angulo;
+        }
+        string toString(){
+            string a, b;
+            double aux1;
+            double aux2;
+            aux1 = x;
+            aux2 = y;
+            a = to_string(aux1);
+            b = to_string(aux2);
+            return "(" + a + "," + b + ")";
+        }
+    private:
+        double x;
+        double y;
+};
+
+int main() {
+    Punto a1(1,1);
+    cout << " Abcisa: "<< a1.getX() << endl;
+    cout << " Ordenada: "<< a1.getY() << endl;
+    cout << " Cuadrante donde esta  es : "<< a1.cuadrante() << endl;
+    cout << "El angulo entre la abcisa positiva y la linea positiva : "<< a1.tita() << endl;
+    cout << "el punto esta : "<< a1.toString() << endl;
+
+
+
+
+return 0;
+}
